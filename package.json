@@ -1,6 +1,6 @@
 {
   "name": "mental-health-app",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A mental health webapp using a MERN stack",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "app"
   ],
   "author": "Hayden Lester and Zac Caffey",
-  "license": "ISC",
+  "license": "UNLICENSE",
   "bugs": {
     "url": "https://github.com/sneekr-a/mental-health-app/issues"
   },
