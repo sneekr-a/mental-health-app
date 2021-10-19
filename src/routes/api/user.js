@@ -7,7 +7,7 @@ const router = express.Router();
 const user = require('../../models/user');
 
 // @route GET api/user/test
-// @description tests books route
+// @description tests users route
 // @access Public
 router.get('/test', (req, res) => res.send('user route testing!'));
 
