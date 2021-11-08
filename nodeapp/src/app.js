@@ -3,7 +3,7 @@
 
 // modules
 const express = require('express');
-const connectDB = require('./config/db.js.js');
+const connectDB = require('./config/db.js');
 const route = require('./routes/router');
 
 // Setup express
