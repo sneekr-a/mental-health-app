@@ -3,10 +3,12 @@
 
 // modules
 const express = require('express');
-const connectDB = require('./config/db.js');
+const connectDB = require('./config/db.js.js');
+const route = require('./routes/router');
 
 // Setup express
 const app = express();
+route(app);
 
 // Connect our DB
 connectDB();

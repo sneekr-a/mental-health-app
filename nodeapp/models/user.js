@@ -8,10 +8,11 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   password: {
+    // Comments: STORED AS A bcryptjs HASH
     type: String,
     required: true
   },
-  joindate: {
+  joindate: {    
     type: String,
     required: true
   },

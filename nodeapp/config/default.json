@@ -1,0 +1,3 @@
+{
+    "mongoURI":"mongodb+srv://dbUser:ULyBMeizSpYSxNPn@mintmind.v3qkm.mongodb.net/MintMind?retryWrites=true&w=majority"
+}
