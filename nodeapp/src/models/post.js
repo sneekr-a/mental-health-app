@@ -2,15 +2,15 @@
 
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
-  username: {
+const PostSchema = new mongoose.Schema({
+  postText: {
     type: String,
-    required: true
+    //required: true (not sure if this is needed)
   },
-  password: {
+  postAuthor: {
     // Comments: STORED AS A bcryptjs HASH
     type: String,
-    required: true
+    //required: true
   },
   joindate: {    
     type: String,
