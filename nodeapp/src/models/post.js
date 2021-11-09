@@ -10,15 +10,17 @@ const PostSchema = new mongoose.Schema({
   postAuthor: {
     // Comments: STORED AS A bcryptjs HASH
     type: String,
-    //required: true
+    //required: true (not sure if this is required)
   },
-  joindate: {    
-    type: String,
-    required: true
+  postDate: {    
+    type: Date,
+    default: Date.now
+    //required: true (not sure if this is required)
   },
-  email: {
-    type: String,
-    required: true
+  privacy: {
+    type: Number,       
+    //0 for private 1 for public?
+    //required: true (not sure if this is required)
   },
   name: {
     type: String
@@ -31,4 +33,4 @@ const PostSchema = new mongoose.Schema({
   }
 });
 
-module.exports = User = mongoose.model('user', UserSchema);
+module.exports = Post = mongoose.model('post', PostSchema);
