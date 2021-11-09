@@ -21,15 +21,6 @@ const PostSchema = new mongoose.Schema({
     type: Number,       
     //0 for private 1 for public?
     //required: true (not sure if this is required)
-  },
-  name: {
-    type: String
-  },
-  streak: {
-    type: Number
-  },
-  points: {
-    type: Number
   }
 });
 
