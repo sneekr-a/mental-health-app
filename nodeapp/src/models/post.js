@@ -16,6 +16,13 @@ const PostSchema = new mongoose.Schema({
     default: Date.now
     //required: true (not sure if this is required)
   },
+  postLikes: {
+    type: Number,
+    default: 0
+  },
+  postComments: {
+    type: String
+  },
   privacy: {
     type: Number,       
     //0 for private 1 for public?
