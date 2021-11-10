@@ -8,7 +8,6 @@ const PostSchema = new mongoose.Schema({
     //required: true (not sure if this is needed)
   },
   postAuthor: {
-    // Comments: STORED AS A bcryptjs HASH
     type: String,
     //required: true (not sure if this is required)
   },
