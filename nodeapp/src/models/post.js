@@ -24,7 +24,7 @@ const PostSchema = new mongoose.Schema({
     default: 0
   },
   postComments: {
-    type: String
+    type: String,
   },
   privacy: {
     type: Number,       
