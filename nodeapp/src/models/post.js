@@ -3,6 +3,9 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
+  postID: {
+    type: Number,
+  },
   postText: {
     type: String,
     //required: true (not sure if this is needed)
@@ -21,7 +24,7 @@ const PostSchema = new mongoose.Schema({
     default: 0
   },
   postComments: {
-    type: String
+    type: String,
   },
   privacy: {
     type: Number,       
