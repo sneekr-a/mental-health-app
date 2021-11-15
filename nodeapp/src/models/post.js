@@ -12,12 +12,12 @@ const PostSchema = new mongoose.Schema({
   },
   postAuthor: {
     type: String,
-    //required: true (not sure if this is required)
+    required: true
   },
   postDate: {    
     type: Date,
-    default: Date.now
-    //required: true (not sure if this is required)
+    default: Date.now,
+    required: true
   },
   postLikes: {
     type: Number,
@@ -29,7 +29,7 @@ const PostSchema = new mongoose.Schema({
   privacy: {
     type: Number,       
     //0 for private 1 for public?
-    //required: true (not sure if this is required)
+    required: true
   }
 });
 
