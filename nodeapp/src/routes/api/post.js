@@ -3,58 +3,57 @@
 const express = require('express');
 const router = express.Router();
 
-// Load post model
+// Load User model
 const user = require('../../models/post');
 
-// @route GET api/post/test
-// @description tests post route
+// @route GET api/user/test
+// @description tests users route
 // @access Public
 router.get('/test', (req, res) => res.send('post route testing!'));
 
-// @route GET api/posts
-// @description Get all posts
+// @route GET api/user
+// @description Get all users
 // @access Public
 router.get('/', (req, res) => {
-  Post.find()
+  user.find()
     .then(post => res.json(post))
     .catch(err => res.status(404).json({ nopostfound: 'No Posts found' }));
 });
 
-//(not sure if we need this)
-// @route GET api/post/:id
-// @description Get single post by id
+// @route GET api/users/:id
+// @description Get single user by id
 // @access Public
 router.get('/:id', (req, res) => {
-  Post.findById(req.params.id)
+  User.findById(req.params.id)
     .then(post => res.json(post))
     .catch(err => res.status(404).json({ nopostsfound: 'No Posts found' }));
 });
 
-// @route GET api/post
-// @description add/save post
+// @route GET api/user
+// @description add/save user
 // @access Public
 router.post('/', (req, res) => {
-  Post.create(req.body)
+  User.create(req.body)
     .then(post => res.json({ msg: 'Post added successfully' }))
     .catch(err => res.status(400).json({ error: 'Unable to add this post' }));
 });
 
-// @route GET api/post/:id
-// @description Update post
+// @route GET api/user/:id
+// @description Update user
 // @access Public
 router.put('/:id', (req, res) => {
-  Post.findByIdAndUpdate(req.params.id, req.body)
+  User.findByIdAndUpdate(req.params.id, req.body)
     .then(post => res.json({ msg: 'Updated successfully' }))
     .catch(err =>
       res.status(400).json({ error: 'Unable to update the Database' })
     );
 });
 
-// @route GET api/post/:id
-// @description Delete post by id
+// @route GET api/user/:id
+// @description Delete user by id
 // @access Public
 router.delete('/:id', (req, res) => {
-  Post.findByIdAndRemove(req.params.id, req.body)
+  User.findByIdAndRemove(req.params.id, req.body)
     .then(post => res.json({ mgs: 'post entry deleted successfully' }))
     .catch(err => res.status(404).json({ error: 'No such post' }));
 });
