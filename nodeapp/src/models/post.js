@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const PostSchema = new mongoose.Schema({
   postID: {
     type: Number,
+    require: true
   },
   postText: {
     type: String,
