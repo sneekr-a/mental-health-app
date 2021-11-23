@@ -16,11 +16,11 @@ route(app);
 // Connect our DB
 connectDB();
 
-// cors
-app.use(cors({ origin: true, credentials: true }));
-
 //init middleware
 app.use(express.json({ extended: false }));
+
+// cors
+app.use(cors({ origin: true, credentials: true }));
 
 //Testing
 app.get('/', (req, res) => res.send('Hello world!'));
