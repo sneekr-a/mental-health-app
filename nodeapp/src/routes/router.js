@@ -1,4 +1,4 @@
-var user = require('./api/user')
+const user = require('./api/user')
 const post = require('./api/post')
 
 function setupRoute (app) {
