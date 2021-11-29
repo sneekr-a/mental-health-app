@@ -12,22 +12,21 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  joindate: {    
-    type: String,
-    required: true
-  },
   email: {
     type: String,
     required: true
-  },
-  name: {
-    type: String
   },
   streak: {
     type: Number
   },
   points: {
     type: Number
+  },
+  moodData: {
+    type: Array
+  },
+  friendsList: {
+    type: Array
   }
 });
 
