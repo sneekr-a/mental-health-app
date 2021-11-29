@@ -5,6 +5,7 @@ const router = express.Router();
 
 // Load post model
 const Post = require('../../models/post');
+const User = require('../../models/user')
 
 // @route GET api/post/test
 // @description tests post route
@@ -20,7 +21,6 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ nopostfound: 'No Posts found' }));
 });
 
-//(not sure if we need this)
 // @route GET api/post/:id
 // @description Get single post by id
 // @access Public
@@ -33,9 +33,21 @@ router.get('/:id', (req, res) => {
 // @route GET api/post
 // @description add/save post
 // @access Public
+// UNTESTED
 router.post('/', (req, res) => {
   Post.create(req.body)
-    .then(post => res.json({ msg: 'Post added successfully' }))
+    .then(post => {
+      User.findByIdAndUpdate(req.body.postAuthor,
+        {$push: {"postsAuthored": req.body._id}}),
+        {safe: true, upsert: true},
+        function(err, model){
+          if(err){
+            console.log(err);
+            return res.send(err);
+          }
+          return res.json(model);
+        }
+    })
     .catch(err => res.status(400).json({ error: 'Unable to add this post' }));
 });
 
