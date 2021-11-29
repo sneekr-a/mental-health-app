@@ -3,12 +3,13 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-  postID: {
-    type: Number,
-    require: true
-  },
-  postText: {
+  postTitle: {
     type: String,
+    required: true
+  },
+  postContent: {
+    type: String,
+    required: true
   },
   postAuthor: {
     type: String,
@@ -16,19 +17,15 @@ const PostSchema = new mongoose.Schema({
   },
   postDate: {    
     type: Date,
-    default: Date.now,
     required: true
   },
   postLikes: {
     type: Number,
     default: 0
   },
-  postComments: {
-    type: String,
-  },
   privacy: {
     type: Number,       
-    //0 for private 1 for public?
+    //0, 1, 2 for private, friends-only, or public
     required: true
   }
 });
