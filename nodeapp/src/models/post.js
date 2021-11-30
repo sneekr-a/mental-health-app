@@ -16,7 +16,7 @@ const PostSchema = new mongoose.Schema({
     required: true
   },
   postDate: {    
-    type: Date,
+    type: String,
     required: true
   },
   postLikes: {

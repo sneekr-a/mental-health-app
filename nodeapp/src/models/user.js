@@ -17,16 +17,24 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   streak: {
-    type: Number
+    type: Number,
+    default: 0
   },
   points: {
-    type: Number
+    type: Number,
+    default: 0
   },
   moodData: {
-    type: Array
+    type: Array,
+    default: {}
   },
   friendsList: {
-    type: Array
+    type: Array,
+    default: {}
+  },
+  postsAuthored: {
+    type: Array,
+    default: {}
   }
 });
 

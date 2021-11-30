@@ -52,6 +52,7 @@ router.put('/:id', (req, res) => {
 // @route GET api/user/:id
 // @description Delete user by id
 // @access Public
+// TODO : DELETE USER'S POSTS TOO
 router.delete('/:id', (req, res) => {
   User.findByIdAndRemove(req.params.id, req.body)
     .then(user => res.json({ mgs: 'User entry deleted successfully' }))

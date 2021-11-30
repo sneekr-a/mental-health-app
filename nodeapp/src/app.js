@@ -3,12 +3,16 @@
 
 // modules
 const express = require('express');
+const bodyParser = require('body-parser');
 const connectDB = require('./config/db.js');
 const route = require('./routes/router');
 var cors = require('cors');
 
 // Setup express
 const app = express();
+
+// Specify Body parser
+app.use(bodyParser.json());
 
 //Use router.js
 route(app);
@@ -17,8 +21,6 @@ route(app);
 connectDB();
 
 //init middleware
-app.use(express.json({ extended: false }));
-
 // cors
 app.use(cors({ origin: true, credentials: true }));
 

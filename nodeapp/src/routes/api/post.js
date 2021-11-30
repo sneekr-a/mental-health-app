@@ -33,20 +33,25 @@ router.get('/:id', (req, res) => {
 // @route GET api/post
 // @description add/save post
 // @access Public
-// UNTESTED
+// TESTED
 router.post('/', (req, res) => {
   Post.create(req.body)
     .then(post => {
-      User.findByIdAndUpdate(req.body.postAuthor,
-        {$push: {"postsAuthored": req.body._id}}),
-        {safe: true, upsert: true},
-        function(err, model){
-          if(err){
-            console.log(err);
-            return res.send(err);
-          }
-          return res.json(model);
-        }
+
+      // Save the postid to the user
+      User.findById(post.postAuthor)
+      .then(user => {
+        user.postsAuthored.push(post._id);
+        user.save();
+      })
+      .catch(err => {
+        res.status(400).json({error: err});
+        console.log(err);
+      });
+      
+      //Success condition
+      res.json({msg: "post added successfully"});
+
     })
     .catch(err => res.status(400).json({ error: 'Unable to add this post' }));
 });
@@ -65,6 +70,7 @@ router.put('/:id', (req, res) => {
 // @route GET api/post/:id
 // @description Delete post by id
 // @access Public
+// TODO : DELETE POSTID FROM USER
 router.delete('/:id', (req, res) => {
   Post.findByIdAndRemove(req.params.id, req.body)
     .then(post => res.json({ mgs: 'post entry deleted successfully' }))
