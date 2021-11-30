@@ -38,24 +38,9 @@
   color: white;
 }
 
-.ShowUserDetails {
+.LoginUser {
   background-color: #383B53;
   min-height: 100vh;
-  color: white;
-}
-
-.UpdateUserInfo {
-  background-color: #383B53;
-  min-height: 100vh;
-  color: white;
-}
-
-.ShowUserList {
-  background-color: #383B53;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-  min-width: 100px;
   color: white;
 }
 
@@ -95,4 +80,18 @@
   color: #6c757d;
   font-size: 1em;
   padding: 10px 0 10px 0;
+}
+
+/* General link formatting */
+.link:link {
+  color: #a1c3ff;
+}
+.link:visited {
+  color: #a1c3ff;
+}
+.link:hover {
+  color: #8ba9dc;
+}
+.link:active {
+  color: #FFFFFF;
 }

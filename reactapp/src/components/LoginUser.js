@@ -4,14 +4,12 @@ import '../App.css';
 import axios from 'axios';
 
 
-class RegisterUser extends Component {
+class LoginUser extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: '',
-      password_confirmation: '',
-      email: ''
+      email: '',
+      password: ''
     };
   }
 
@@ -23,31 +21,27 @@ class RegisterUser extends Component {
     e.preventDefault();
 
     const data = {
-      username: this.state.username,
-      password: this.state.password,
-      password_confirmation: this.state.password_confirmation,
-      email: this.state.email
+      email: this.state.email,
+      password: this.state.password
     };
 
     axios
-      .post('http://localhost:8082/auth/signup', data)
+      .post('http://localhost:8082/auth/signin', data)
       .then(res => {
         this.setState({
-          username: '',
-          password:'',
-          password_confirmation:'',
-          email:''
+          email: '',
+          password: ''
         })
         this.props.history.push('/');
       })
       .catch(err => {
-        console.log("Error in RegisterUser!");
+        console.log("Error in LoginUser!");
       })
   };
 
   render() {
     return (
-      <div className="RegisterUser">
+      <div className="LoginUser">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -57,27 +51,14 @@ class RegisterUser extends Component {
               </Link>
             </div>
             <div className="col-md-5 m-auto">
-              <h1 className="display-4 text-center">Register An Account</h1>
-              <p className="lead text-center">
-                  Register an account for MintMind and start your journey today!
-              </p>
-
+              <h1 className="display-4 text-center">Login</h1>
+              <br/>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='Username'
-                    name='username'
-                    className='form-control'
-                    value={this.state.username}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className='form-group'>
-                  <input
-                    type='text'
                     placeholder='Email'
-                    name='name'
+                    name='email'
                     className='form-control'
                     value={this.state.email}
                     onChange={this.onChange}
@@ -93,16 +74,6 @@ class RegisterUser extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <div className='form-group'>
-                  <input
-                    type='text'
-                    placeholder='Confirm password'
-                    name='email'
-                    className='form-control'
-                    value={this.state.password_confirmation}
-                    onChange={this.onChange}
-                  />
-                </div>
 
                 <input
                     type="submit"
@@ -111,7 +82,7 @@ class RegisterUser extends Component {
               </form>
               <br/>
               <p class="text-center">
-                Already a user? <a className="link" href="/login">Log in.</a>
+                Don't have an account? <a className="link" href="/register">Register.</a>
               </p>
           </div>
           </div>
@@ -121,4 +92,4 @@ class RegisterUser extends Component {
   }
 }
 
-export default RegisterUser;
+export default LoginUser;
