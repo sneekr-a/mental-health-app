@@ -1,16 +1,17 @@
-const User = require('../models/User');
+const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {
    createJWT,
 } = require("../utils/auth");
-exports.signup = (req, res, next) => {                                                             // sign up auth
+
+exports.signup = (req, res, next) => {                                                                                     // sign up auth
   let { name, email, password, password_confirmation } = req.body;
   User.findOne({email: email})
    .then(user=>{
-      if(user){                                                                                    // first check if the user exists
-         return res.status(422).json({ errors: [{ user: "email already exists" }] });              // if the user exists throw error
-      }else {                                                                                      // if the user doesn't then create a new user
+      if(user){                                                                                                          // first check if the user exists
+         return res.status(422).json({ errors: [{ user: "email already linked with existing account" }] });             // if the user exists throw error
+      }else {                                                                                                          // if the user doesn't then create a new user
          const user = new User({
            email: email,
            name: name,
@@ -26,7 +27,7 @@ exports.signup = (req, res, next) => {                                          
                   result: response
                 })
              })
-             .catch(err => {
+             .catch(err => {                                                                       // catch any error with storing the hashed password
                res.status(500).json({
                   errors: [{ error: err }]
                });
@@ -50,8 +51,7 @@ exports.signin = (req, res) => {                                                
        } else {                                                                                     // if they do, compare passwords to verify they match
           bcrypt.compare(password, user.password).then(isMatch => {
              if (!isMatch) {
-              return res.status(400).json({ errors: [{ password:
-"incorrect" }] 
+              return res.status(400).json({ errors: [{ password: "incorrect" }]                    // if password do not match then throw an error 
               });
              }
        let access_token = createJWT(                                                                
@@ -64,7 +64,7 @@ exports.signin = (req, res) => {                                                
             res.status(500).json({ erros: err });
          }
          if (decoded) {
-             return res.status(200).json({                                                          // send a success token
+             return res.status(200).json({                                                          // if we successfully decode the access token send a success token
                 success: true,
                 token: access_token,
                 message: user
