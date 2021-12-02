@@ -57,6 +57,12 @@ router.delete('/:id', (req, res) => {
   User.findByIdAndRemove(req.params.id, req.body)
     .then(user => res.json({ mgs: 'User entry deleted successfully' }))
     .catch(err => res.status(404).json({ error: 'No such user' }));
+
+  User.findById(post.postAuthor)
+    .then(user => {
+      delete user.postsAuthored;
+    })
+    .catch(err => res.status(404).json({ error: "User has no posts"}))
 });
 
 module.exports = router;
