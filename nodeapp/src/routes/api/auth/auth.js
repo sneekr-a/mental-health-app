@@ -9,6 +9,32 @@ exports.signup = (req, res, next) => {                                          
   let { username, email, password, password_confirmation } = req.body;
   console.log(req.body);
 
+  let errors = [];
+
+  if (!username){
+     errors.push({ username: "required" });
+  }
+
+  if (!email){
+     errors.push({ email: "required" });
+  }
+
+  if (!password){
+     errors.push({ password: "required"});
+  }
+
+  if (!password_confirmation){
+     errors.push({ password_confirmation: "required"});
+  }
+
+  if (password != password_confirmation){
+     errors.push({ password: "mismatch"});
+  }
+
+  if (errors.length > 0){
+      return res.status(422).json({ errors: errors});
+  }
+
   User.findOne({email: email})
    .then(user=>{
       if(user){                                                                                                        // first check if the user exists
