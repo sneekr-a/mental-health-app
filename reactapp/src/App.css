@@ -44,6 +44,13 @@
   color: white;
 }
 
+.HomePage {
+  background-color: #383B53;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+}
+
 /*Sidebar classes*/
 .SideBar {
   /*background-color: #90B6AD;*/
@@ -52,6 +59,7 @@
   width: 25vmin;
   max-width: 325px;
   color: white;
+  box-shadow: 2px 2px 5px black;
 }
 
 .SideBar-navElement {
@@ -135,4 +143,9 @@
 }
 .link:active {
   color: #FFFFFF;
+}
+
+/* Testing classes */
+.debug{
+  border: 1px solid red;
 }

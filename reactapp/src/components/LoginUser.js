@@ -32,7 +32,6 @@ class LoginUser extends Component {
           email: '',
           password: ''
         })
-        this.props.history.push('/');
       })
       .catch(err => {
         console.log("Error in LoginUser!");

@@ -5,6 +5,7 @@ const router = express.Router();
 
 // Load User model
 const user = require('../../models/user');
+const Post = require('../../models/post')
 
 // @route GET api/user/test
 // @description tests users route
@@ -52,17 +53,15 @@ router.put('/:id', (req, res) => {
 // @route GET api/user/:id
 // @description Delete user by id
 // @access Public
-// TODO : DELETE USER'S POSTS TOO
 router.delete('/:id', (req, res) => {
   User.findByIdAndRemove(req.params.id, req.body)
-    .then(user => res.json({ mgs: 'User entry deleted successfully' }))
-    .catch(err => res.status(404).json({ error: 'No such user' }));
-
-  User.findById(post.postAuthor)
     .then(user => {
-      delete user.postsAuthored;
+      for (id in user.postsAuthored){
+        Post.findByIdAndRemove(id);
+      }
+      res.send(json({msg: "User deleted successfully"}));
     })
-    .catch(err => res.status(404).json({ error: "User has no posts"}))
+    .catch(err => res.status(404).json({ error: 'No such user' }));
 });
 
 module.exports = router;
