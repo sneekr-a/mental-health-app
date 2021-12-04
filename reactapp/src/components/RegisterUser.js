@@ -77,7 +77,7 @@ class RegisterUser extends Component {
                   <input
                     type='text'
                     placeholder='Email'
-                    name='name'
+                    name='email'
                     className='form-control'
                     value={this.state.email}
                     onChange={this.onChange}
@@ -97,7 +97,7 @@ class RegisterUser extends Component {
                   <input
                     type='text'
                     placeholder='Confirm password'
-                    name='email'
+                    name='password_confirmation'
                     className='form-control'
                     value={this.state.password_confirmation}
                     onChange={this.onChange}
