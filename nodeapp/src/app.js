@@ -13,16 +13,14 @@ const app = express();
 
 // Specify Body parser
 app.use(bodyParser.json());
+// cors
+app.use(cors({ origin: true, credentials: true }));
 
 //Use router.js
 route(app);
 
 // Connect our DB
 connectDB();
-
-//init middleware
-// cors
-app.use(cors({ origin: true, credentials: true }));
 
 //Testing
 app.get('/', (req, res) => res.send('Hello world!'));
