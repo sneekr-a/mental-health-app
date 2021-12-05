@@ -38,10 +38,11 @@ class RegisterUser extends Component {
           password_confirmation:'',
           email:''
         })
-        this.props.history.push('/');
+        //this.props.history.push('/');
+        // need to fix this later!
       })
       .catch(err => {
-        console.log("Error in RegisterUser!");
+        console.log("Error in RegisterUser!" + err);
       })
   };
 

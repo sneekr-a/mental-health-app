@@ -32,9 +32,14 @@ class LoginUser extends Component {
           email: '',
           password: ''
         })
+
+        console.log(res.data.token);
+
+        localStorage.setItem('mmtoken', JSON.stringify(res.data.token));
+
       })
       .catch(err => {
-        console.log("Error in LoginUser!");
+        console.log("Error in LoginUser!" + err);
       })
   };
 
