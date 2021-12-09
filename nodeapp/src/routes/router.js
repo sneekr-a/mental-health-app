@@ -1,3 +1,5 @@
+// this file contains our general use routes
+
 const user = require('./api/user');
 const post = require('./api/post');
 const auth = require('./api/auth/authroute');

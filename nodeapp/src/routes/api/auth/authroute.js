@@ -1,3 +1,5 @@
+// this file contains our authentication routes
+
 const express = require('express');
 const router = express.Router();
 const { signup, signin } = require('./auth');
