@@ -16,7 +16,7 @@ class App extends Component {
           window.location.pathname != '/login'){
         
         // If our token exists
-        if(token = localStorage.getItem('mmtoken')){
+        if(token = localStorage.getItem('mmtoken')){    //this is throwing an error for me (Zac)
 
         }else{
           // Otherwise, redirect to login/register
