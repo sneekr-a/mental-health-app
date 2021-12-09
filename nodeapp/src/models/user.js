@@ -2,13 +2,14 @@
 
 const mongoose = require('mongoose');
 
+// User Database Model
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true
   },
   password: {
-    // Comments: STORED AS A bcryptjs HASH
+    // STORED AS A bcryptjs HASH
     type: String,
     required: true
   },

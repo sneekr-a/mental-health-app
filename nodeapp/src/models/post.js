@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 
+// Post Database Model
 const PostSchema = new mongoose.Schema({
   postTitle: {
     type: String,
@@ -24,8 +25,8 @@ const PostSchema = new mongoose.Schema({
     default: 0
   },
   privacy: {
-    type: Number,       
     //0, 1, 2 for private, friends-only, or public
+    type: Number,       
     required: true
   }
 });
