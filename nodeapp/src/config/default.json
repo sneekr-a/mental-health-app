@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://dbUser:1alDOSlxSckN8U1s@mintmind.v3qkm.mongodb.net/MintMind?retryWrites=true&w=majority",
+    "TOKEN_SECRET": "TEST"
+}
