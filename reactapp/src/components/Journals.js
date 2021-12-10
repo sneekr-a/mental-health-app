@@ -3,14 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 import SideBar from './SideBar';
+import axios from 'axios';
 
 class JournalsInner extends Component {
     constructor(props) {
         super(props);
         this.state = {
             token: localStorage.getItem('mmtoken'),
-            userid: localStorage.getItem('mmuser')
+            userid: localStorage.getItem('mmuser'),
+            title: '',
+            content: '',
+            success: 'Submit'
         }
+    }
+
+    updatePostState() {
+
     }
 
     componentDidMount() {
@@ -20,6 +28,35 @@ class JournalsInner extends Component {
                 navigate('/login')
             }
         }, 0)
+    }
+
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value});
+    }
+
+    onSubmit = e =>{
+        e.preventDefault();
+
+        const data = {
+            postTitle: this.state.title,
+            postContent: this.state.content,
+            postAuthor: this.state.userid,
+            postDate: Date.now(),
+            privacy: 0
+        }
+
+        axios
+        .post('http://localhost:8082/post', data)
+        .then(res => {
+            this.setState({
+                title: '',
+                content: '',
+                success: "Post successful!"
+            })
+        }).catch((err) => {
+            console.log("Error in journal post." + err);
+        });
+
     }
 
     render() {
@@ -39,19 +76,24 @@ class JournalsInner extends Component {
                                 <form noValidate onSubmit={this.onSubmit}>
                                     <input className="form-control form-control-lg"
                                         rows="1"
-                                        placeholder="Title">
-
+                                        placeholder="Title"
+                                        name='title'
+                                        value={this.state.title}
+                                        onChange={this.onChange}>
                                     </input>
                                     <br />
                                     <textarea className="form-control"
                                         rows="8"
-                                        placeholder="How are you feeling today?">
+                                        placeholder="How are you feeling today?"
+                                        name='content'
+                                        value={this.state.content}
+                                        onChange={this.onChange}>
 
                                     </textarea>
                                     <input
                                         type="submit"
                                         className="btn btn-outline-success btn-block mt-4"
-                                        value="Submit"
+                                        value={this.state.success}
                                     />
                                 </form>
                             </div>

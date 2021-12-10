@@ -35,7 +35,7 @@ class LoginUserInner extends Component {
         })
 
         console.log(res.data);
-        if(res.data.success == true){
+        if(res.data.success === true){
           console.log("success")
           localStorage.setItem('mmtoken', res.data.token);
           localStorage.setItem('mmuser', res.data.userid);

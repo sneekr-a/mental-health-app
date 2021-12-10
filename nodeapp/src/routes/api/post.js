@@ -30,6 +30,24 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(404).json({ nopostsfound: 'No Posts found' }));
 });
 
+// @route GET api/post/all/:id
+// @description Get all posts under a user
+// @access Public
+router.get('/all/:id', (req, res) => {
+  var posts = [];
+  User.findById(req.params.id)
+  .then(user => {
+    console.log("Good so far..");
+    for (id in user.postsAuthored){
+      console.log(id);
+    }
+    res.status(200).json(posts);
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({msg: err})
+  })
+})
+
 // @route GET api/post
 // @description add/save post
 // @access Public
@@ -53,7 +71,7 @@ router.post('/', (req, res) => {
       res.json({msg: "post added successfully"});
 
     })
-    .catch(err => res.status(400).json({ error: 'Unable to add this post' }));
+    .catch(err => res.status(401).json({ error: err }));
 });
 
 // @route GET api/post/:id
