@@ -6,6 +6,7 @@ import SideBar from './SideBar';
 import axios from 'axios';
 
 class JournalsInner extends Component {
+    // Sets states
     constructor(props) {
         super(props);
         this.state = {
@@ -17,10 +18,7 @@ class JournalsInner extends Component {
         }
     }
 
-    updatePostState() {
-
-    }
-
+    // Redirects user if they need to log in
     componentDidMount() {
         setTimeout(() => {
             if (this.state.token === null) {
@@ -30,13 +28,16 @@ class JournalsInner extends Component {
         }, 0)
     }
 
+    //Pushes changes from forms to state
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value});
     }
 
+    //Submits posts
     onSubmit = e =>{
         e.preventDefault();
 
+        //Data of our post request.
         const data = {
             postTitle: this.state.title,
             postContent: this.state.content,
@@ -45,6 +46,7 @@ class JournalsInner extends Component {
             privacy: 0
         }
 
+        //Forming the post req with axios
         axios
         .post('http://localhost:8082/post', data)
         .then(res => {
@@ -59,6 +61,7 @@ class JournalsInner extends Component {
 
     }
 
+    //Render HTML
     render() {
         console.log(this.props.token);
         return (
@@ -112,6 +115,7 @@ class JournalsInner extends Component {
 
 }
 
+//Wrapper function for redirects
 export default function Journals(props) {
     const navigate = useNavigate();
 
