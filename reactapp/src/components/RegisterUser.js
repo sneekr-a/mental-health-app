@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
 
-class RegisterUser extends Component {
+class RegisterUserInner extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,6 +22,7 @@ class RegisterUser extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    const { navigate } = this.props;
 
     const data = {
       username: this.state.username,
@@ -38,8 +40,7 @@ class RegisterUser extends Component {
           password_confirmation:'',
           email:''
         })
-        //this.props.history.push('/');
-        // need to fix this later!
+        navigate('/');
       })
       .catch(err => {
         console.log("Error in RegisterUser!" + err);
@@ -86,7 +87,7 @@ class RegisterUser extends Component {
                 </div>
                 <div className='form-group'>
                   <input
-                    type='text'
+                    type='password'
                     placeholder='Password'
                     name='password'
                     className='form-control'
@@ -96,7 +97,7 @@ class RegisterUser extends Component {
                 </div>
                 <div className='form-group'>
                   <input
-                    type='text'
+                    type='password'
                     placeholder='Confirm password'
                     name='password_confirmation'
                     className='form-control'
@@ -122,4 +123,8 @@ class RegisterUser extends Component {
   }
 }
 
-export default RegisterUser;
+export default function RegisterUser(props) {
+  const navigate = useNavigate();
+
+  return <RegisterUserInner {...props} navigate={navigate}/>
+}

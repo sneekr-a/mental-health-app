@@ -123,10 +123,11 @@ exports.signin = (req, res) => {
 
                // if we successfully decode the access token send a success token
                if (decoded) {
+                  console.log(user._id);
                   return res.status(200).json({                                                          
                      success: true,
                      token: access_token,
-                     message: user
+                     userid: user._id
                   });
                }
             });
@@ -137,4 +138,18 @@ exports.signin = (req, res) => {
    }).catch(err => {
       res.status(500).json({ erros: err });
    });
+}
+
+exports.verifyjwt = (req, res) => {
+   let {token} = req.body
+   jwt.verify(token, TOKEN_SECRET, (err, decoded) => {
+      if(err){
+         res.status(500).json({error: err});
+      }
+      if(decoded) {
+         return res.status(200).json({
+            success: true
+         })
+      }
+   })
 }

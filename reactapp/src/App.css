@@ -44,6 +44,12 @@
   color: white;
 }
 
+.Journals {
+  background-color: #383B53;
+  min-height: 100vh;
+  color: white; 
+}
+
 .HomePage {
   background-color: #383B53;
   min-height: 100vh;
@@ -60,6 +66,7 @@
   max-width: 325px;
   color: white;
   box-shadow: 2px 2px 5px black;
+  position: absolute;
 }
 
 .SideBar-navElement {

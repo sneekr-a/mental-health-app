@@ -1,38 +1,35 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css';
 
 import RegisterUser from './components/RegisterUser';
 import LoginUser from './components/LoginUser';
 import HomePage from './components/HomePage';
+import Journals from './components/Journals'
 
 class App extends Component {
-
-  // todo!
-  componentDidMount(){
-
-    setTimeout(() => {
-      if( window.location.pathname != '/register' &&
-          window.location.pathname != '/login'){
-        
-        // If our token exists
-        if(token = localStorage.getItem('mmtoken')){    //this is throwing an error for me (Zac)
-
-        }else{
-          // Otherwise, redirect to login/register
-        }
-      }
-    }, 0)
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: localStorage.getItem('mmtoken'),
+      userid: localStorage.getItem('mmuser')
+    }
   }
 
+  // Method for verifying the token
+
   render() {
+    console.log("Current token: " + this.state.token);
+    console.log("Current user: " + this.state.userid);
     return (
       <Router>
         <div>
           <Routes>
             <Route exact path='/' element={<HomePage />} />
+            <Route exact path='/journals' element={<Journals />}/>
             <Route exact path='/register' element={<RegisterUser />} />
             <Route exact path='/login' element={<LoginUser />} />
+            <Route exact path='*' element={<h4>Error 404. <a href="/">Return to safety!</a></h4>} />
           </Routes>
         </div>
       </Router>

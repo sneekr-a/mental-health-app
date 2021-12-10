@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
-class LoginUser extends Component {
-  constructor() {
-    super();
+class LoginUserInner extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: ''
@@ -33,14 +34,19 @@ class LoginUser extends Component {
           password: ''
         })
 
-        console.log(res.data.token);
+        console.log(res.data);
+        if(res.data.success == true){
+          console.log("success")
+          localStorage.setItem('mmtoken', res.data.token);
+          localStorage.setItem('mmuser', res.data.userid);
+        }
 
-        localStorage.setItem('mmtoken', JSON.stringify(res.data.token));
+        this.props.navigate('/');
 
       })
       .catch(err => {
         console.log("Error in LoginUser!" + err);
-      })
+      });
   };
 
   render() {
@@ -70,7 +76,7 @@ class LoginUser extends Component {
                 </div>
                 <div className='form-group'>
                   <input
-                    type='text'
+                    type='password'
                     placeholder='Password'
                     name='password'
                     className='form-control'
@@ -82,6 +88,7 @@ class LoginUser extends Component {
                 <input
                     type="submit"
                     className="btn btn-outline-warning btn-block mt-4"
+                    value="Login"
                 />
               </form>
               <br/>
@@ -96,4 +103,8 @@ class LoginUser extends Component {
   }
 }
 
-export default LoginUser;
+export default function LoginUser(props){
+  const navigate = useNavigate();
+
+  return <LoginUserInner {...props} navigate={navigate} />
+};
