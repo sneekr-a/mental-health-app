@@ -35,12 +35,19 @@ router.get('/:id', (req, res) => {
 // @access Public
 router.get('/all/:id', (req, res) => {
   var posts = [];
+
   User.findById(req.params.id)
   .then(user => {
     console.log("Good so far..");
+
+    console.log(user.postsAuthored);
     for (id in user.postsAuthored){
-      console.log(id);
+      Post.findById(id)
+      .then(post => {
+        posts.push(post);
+      })
     }
+
     res.status(200).json(posts);
   }).catch(err => {
     console.log(err);
@@ -59,7 +66,7 @@ router.post('/', (req, res) => {
       // Save the postid to the user
       User.findById(post.postAuthor)
       .then(user => {
-        user.postsAuthored.push(post._id);
+        user.postsAuthored.push(post);
         user.save();
       })
       .catch(err => {

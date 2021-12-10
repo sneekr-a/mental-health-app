@@ -50,6 +50,12 @@
   color: white; 
 }
 
+.inputbg {
+  width: 50vw;
+  height: 3vh;
+  padding: 2px;
+}
+
 .HomePage {
   background-color: #383B53;
   min-height: 100vh;

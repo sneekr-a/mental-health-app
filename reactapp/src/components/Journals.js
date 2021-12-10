@@ -103,8 +103,39 @@ class JournalsInner extends Component {
                             <br /><br />
                             <div>
                                 <h3 className="text-centered">
-                                    Previous Journals
+                                    Record Mood
                                 </h3>
+                                <h5>
+                                    On a scale of one to ten, how are you doing today?
+                                </h5>
+                                <div className="form-check form-check-inline inputbg">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">1&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">2&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">3&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">4&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">5&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">6&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">7&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">8&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">9&nbsp;</label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                                    <label class="form-check-label" for="inlineRadio1">10&nbsp;</label>
+                                    &nbsp;
+                                    <input
+                                        type="submit"
+                                        className="btn btn-outline-success btn btn-sm"
+                                        value="Submit"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
