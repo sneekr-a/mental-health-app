@@ -16,8 +16,6 @@ class App extends Component {
     }
   }
 
-  // Method for verifying the token
-
   render() {
     console.log("Current token: " + this.state.token);
     console.log("Current user: " + this.state.userid);
